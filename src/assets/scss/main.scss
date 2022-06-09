@@ -1,0 +1,14 @@
+.main {
+  &__container {
+    height: 100%;
+    max-width: none !important;
+    padding: 0 !important;
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  }
+}
