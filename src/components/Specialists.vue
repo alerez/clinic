@@ -2,6 +2,14 @@
 import { useStore } from '@/stores';
 
 const store = useStore();
+
+import { Splide, SplideSlide } from '@splidejs/vue-splide';
+import { defineComponent } from 'vue';
+import '@splidejs/vue-splide/css';
+
+export default defineComponent( {
+  components: { Splide, SplideSlide },
+} );
 </script>
 
 <template>
@@ -11,25 +19,71 @@ const store = useStore();
         <div class="specialists__title title">Наша команда специалистов</div>
         <div class="specialists__subtitle subtitle">Профессионалы своего дела</div>
 
-        <div class="specialists__carousel">
-          <div
-            class="specialists__specialist specialist"
-            v-for="sp in store.specialists"
-            :key="sp.name"
-          >
-            <div class="specialist__body">
-              <!-- <img :src="sp.img" alt="" class="specialist__image"> -->
-              <div class="specialist__name">{{ sp.name }}</div>
-              <div class="specialist__about">{{ sp.about }}</div>
+<!--        <div class="specialists__carousel">-->
+<!--          <div-->
+<!--            class="specialists__specialist specialist"-->
+<!--            v-for="sp in store.specialists"-->
+<!--            :key="sp.name"-->
+<!--          >-->
+<!--            <div class="specialist__body">-->
+<!--              &lt;!&ndash; <img :src="sp.img" alt="" class="specialist__image"> &ndash;&gt;-->
+<!--              <div class="specialist__name">{{ sp.name }}</div>-->
+<!--              <div class="specialist__about">{{ sp.about }}</div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+        <Splide :options="{ rewind: true }" aria-label="Vue Splide Example">
+          <SplideSlide class="carousel__body">
+            <div class="specialists__carousel">
+              <div
+                class="specialists__specialist specialist"
+                v-for="sp in store.specialists"
+                :key="sp.name"
+              >
+                <div class="specialist__body">
+                  <!-- <img :src="sp.img" alt="" class="specialist__image"> -->
+                  <div class="specialist__name">{{ sp.name }}</div>
+                  <div class="specialist__about">{{ sp.about }}</div>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-
-        <div class="specialists__indicator">
-          <span v-for="i in 4"
-            :class="i === 1 ? 'active' : ''"
-          ></span>
-        </div>
+          </SplideSlide>
+          <SplideSlide>
+            <div class="specialists__carousel">
+              <div
+                class="specialists__specialist specialist"
+                v-for="sp in store.specialists"
+                :key="sp.name"
+              >
+                <div class="specialist__body">
+                  <!-- <img :src="sp.img" alt="" class="specialist__image"> -->
+                  <div class="specialist__name">{{ sp.name }}</div>
+                  <div class="specialist__about">{{ sp.about }}</div>
+                </div>
+              </div>
+            </div>
+          </SplideSlide>
+          <SplideSlide>
+            <div class="specialists__carousel">
+              <div
+                class="specialists__specialist specialist"
+                v-for="sp in store.specialists"
+                :key="sp.name"
+              >
+                <div class="specialist__body">
+                  <!-- <img :src="sp.img" alt="" class="specialist__image"> -->
+                  <div class="specialist__name">{{ sp.name }}</div>
+                  <div class="specialist__about">{{ sp.about }}</div>
+                </div>
+              </div>
+            </div>
+          </SplideSlide>
+        </Splide>
+<!--        <div class="specialists__indicator">-->
+<!--          <span v-for="i in 4"-->
+<!--            :class="i === 1 ? 'active' : ''"-->
+<!--          ></span>-->
+<!--        </div>-->
       </div>
     </div>
   </section>
